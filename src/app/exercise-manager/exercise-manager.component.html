@@ -1,0 +1,4 @@
+<ul>
+  <li *ngFor="let exercise of exerciseList; index as exercise_id">
+    <app-exercise-button [exercise]="exercise" routerLink='{{exercise_id}}'></app-exercise-button>
+  </li>
