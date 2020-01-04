@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-
+import { Set } from '../set';
 
 @Component({
   selector: 'app-range-input',
@@ -8,6 +8,7 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./range-input.component.css']
 })
 export class RangeInputComponent implements OnInit {
+@Output() submitSet: EventEmitter<Set> = new EventEmitter();
 
   setForm = this.formBuilder.group({
   weight: '',
@@ -16,8 +17,8 @@ export class RangeInputComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) { }
 
-  onSubmit(data) {
-
+  onSubmit(data: Set) {
+    this.submitSet.emit(data);
   }
 
   ngOnInit() {

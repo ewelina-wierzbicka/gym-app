@@ -1,0 +1,29 @@
+<ul *ngIf="results$ | async as results">
+  <li *ngFor="let workout of results">
+    <div *ngFor="let exercise of workout.exercises">
+      <h2>{{exercise.title}}</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>SET</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>WEIGHT</td>
+            <td *ngFor="let set of exercise.sets">{{set.weight}}</td>
+          </tr>
+          <tr >
+            <td>REPETITIONS</td>
+            <td *ngFor="let set of exercise.sets">{{set.rep}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </li>
+</ul>

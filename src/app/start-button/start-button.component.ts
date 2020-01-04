@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { v4 as uuid } from 'uuid';
+import { WorkoutServiceService } from '../workout-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-start-button',
@@ -7,7 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartButtonComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private workoutService: WorkoutServiceService,
+    private router: Router) { }
+
+  startWorkout() {
+    const id = uuid();
+    this.workoutService.startWorkout({id});
+    this.router.navigate(['workout', id]);
+  }
 
   ngOnInit() {
   }

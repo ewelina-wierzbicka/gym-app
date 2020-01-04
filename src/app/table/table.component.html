@@ -1,24 +1,22 @@
-<h2></h2>
 <table>
   <thead>
-  <tr>
-    <th>SET</th>
-    <th>1</th>
-    <th>2</th>
-    <th>3</th>
-    <th>4</th>
-    <th>5</th>
-  </tr>
-</thead>
-<tbody>
-
-  <tr>
-    <td>WEIGHT</td>
-    <td></td>
-  </tr>
-  <tr>
-      <td>REPETITIONS</td>
-      <td></td>
+    <tr>
+      <th>SET</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
     </tr>
-</tbody>
+  </thead>
+  <tbody>
+    <tr *ngIf="setList$ | async as setList">
+      <td>WEIGHT</td>
+      <td *ngFor="let set of setList[0]?.sets">{{set.weight}}</td>
+    </tr>
+    <tr *ngIf="setList$ | async as setList">
+      <td>REPETITIONS</td>
+      <td *ngFor="let set of setList[0]?.sets">{{set.rep}}</td>
+    </tr>
+  </tbody>
 </table>

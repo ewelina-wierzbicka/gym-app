@@ -1,11 +1,7 @@
 <form [formGroup]="setForm" (ngSubmit)="onSubmit(setForm.value)">
-  <div>
-    <label for="weight">WEIGHT</label>
-    <input id="weight" type="range" formControlName="weight">
-  </div>
-  <div>
-    <label for="repetiotions">REPETITIONS</label>
-    <input id="rep" type="range" formControlName="rep">
-  </div>
+  <label for="weight">WEIGHT</label>
+  <input id="weight" type="range" formControlName="weight" min="0" max="100" step="1">
+  <label for="rep">REPETITIONS</label>
+  <input id="rep" type="range" formControlName="rep" min="0" max="100" step="1">
   <button type="submit">Save</button>
 </form>
