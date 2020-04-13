@@ -1,0 +1,47 @@
+:host {
+  background-color: #201e2e;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.summary-title {
+  font-weight: 400;
+  font-size: 3vh;
+  margin: 6vh 0;
+}
+
+.summary-list {
+  list-style: none;
+}
+
+.exercise-title {
+  font-weight: 400;
+  font-size: 3vh;
+  margin-bottom: 3vh;
+}
+
+.summary-table {
+  width: calc(140px + 40vw);
+  text-align: center;
+  border-collapse: collapse;
+  border-style: hidden;
+  margin-bottom: 8vh;
+  font-size: 2.5vh;
+}
+
+.summary-table th, .summary-table td  {
+  height: 5vh;
+  border: 1px solid white;
+}
+
+.summary-table tbody th {
+  width: 40%;
+}
+
+.summary-table td {
+  width: 12%;
+}

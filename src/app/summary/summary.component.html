@@ -1,29 +1,28 @@
-<ul *ngIf="results$ | async as results">
-  <li *ngFor="let workout of results">
-    <div *ngFor="let exercise of workout.exercises">
-      <h2>{{exercise.title}}</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>SET</th>
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-            <th>5</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>WEIGHT</td>
-            <td *ngFor="let set of exercise.sets">{{set.weight}}</td>
-          </tr>
-          <tr >
-            <td>REPETITIONS</td>
-            <td *ngFor="let set of exercise.sets">{{set.rep}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<h1 class="summary-title">Current workout:</h1>
+<ul class="summary-list" *ngIf="results$ | async as results">
+  <li *ngFor="let exercise of results[0]?.exercises">
+    <h2 class="exercise-title">{{exercise.title}}</h2>
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>SET</th>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>WEIGHT</th>
+          <td *ngFor="let set of exercise.sets">{{set.weight}}</td>
+        </tr>
+        <tr >
+          <th>REPETITIONS</th>
+          <td *ngFor="let set of exercise.sets">{{set.rep}}</td>
+        </tr>
+      </tbody>
+    </table>
   </li>
 </ul>

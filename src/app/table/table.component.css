@@ -1,0 +1,21 @@
+.workout-table {
+  width: calc(140px + 40vw);
+  text-align: center;
+  border-collapse: collapse;
+  border-style: hidden;
+  margin-bottom: 4vh;
+  font-size: 2.5vh;
+}
+
+.workout-table th, .workout-table td  {
+  height: 5vh;
+  border: 1px solid white;
+}
+
+.workout-table tbody th {
+  width: 40%;
+}
+
+.workout-table td {
+  width: 12%;
+}

@@ -1,7 +1,11 @@
-<form [formGroup]="setForm" (ngSubmit)="onSubmit(setForm.value)">
-  <label for="weight">WEIGHT</label>
-  <input id="weight" type="range" formControlName="weight" min="0" max="100" step="1">
-  <label for="rep">REPETITIONS</label>
-  <input id="rep" type="range" formControlName="rep" min="0" max="100" step="1">
-  <button type="submit">Save</button>
+<form class="set-form" [formGroup]="setForm">
+  <div class="form-wrapper">
+    <label for="weight">WEIGHT</label>
+    <mat-slider vertical id="weight" formControlName="weight" thumbLabel min="1" max="100" required></mat-slider>
+  </div>
+  <div class="form-wrapper">
+    <label for="rep">REPETITIONS</label>
+    <mat-slider vertical id="rep" formControlName="rep" thumbLabel min="1" max="100" required></mat-slider>
+  </div>
+  <button class="submit-button" type="submit" [mat-dialog-close]="setForm.value">Save</button>
 </form>

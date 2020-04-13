@@ -1,14 +1,14 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { v4 as uuid } from 'uuid';
 import { WorkoutServiceService } from '../workout-service.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-start-button',
-  templateUrl: './start-button.component.html',
-  styleUrls: ['./start-button.component.css']
+  selector: 'app-start-manager',
+  templateUrl: './start-manager.component.html',
+  styleUrls: ['./start-manager.component.css']
 })
-export class StartButtonComponent implements OnInit {
+export class StartManagerComponent implements OnInit {
 
   constructor(
     private workoutService: WorkoutServiceService,

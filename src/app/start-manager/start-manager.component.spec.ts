@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StartButtonComponent } from './start-button.component';
+import { StartManagerComponent } from './start-manager.component';
 
-describe('StartButtonComponent', () => {
-  let component: StartButtonComponent;
-  let fixture: ComponentFixture<StartButtonComponent>;
+describe('StartManagerComponent', () => {
+  let component: StartManagerComponent;
+  let fixture: ComponentFixture<StartManagerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StartButtonComponent ]
+      declarations: [ StartManagerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StartButtonComponent);
+    fixture = TestBed.createComponent(StartManagerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

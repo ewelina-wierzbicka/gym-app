@@ -1,0 +1,37 @@
+.set-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  justify-content: center;
+}
+
+.set-form label {
+  color: #201e2e;
+  width: 100%;
+  text-align: center;
+  padding: 4vh 0;
+  font-size: 2.5vh;
+}
+
+.set-form mat-slider {
+  height: 35vh;
+}
+
+.submit-button {
+  margin-top: 10vh;
+  background-color: #3fafa2;
+  width: calc(120px + 10vw);
+  height: 8vh;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 3vh;
+  border: none;
+  outline: none;
+}

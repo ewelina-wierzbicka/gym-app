@@ -1,0 +1,32 @@
+:host {
+  background-color: #201e2e;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.exercise-list {
+  list-style-type: none;
+  height: 80vh;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.exercise-button {
+  background-color: transparent;
+  width: calc(140px + 40vw);
+  height: 14vh;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 3vh;
+  border: 2px solid white;
+  outline: none;
+}
+
+
+

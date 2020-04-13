@@ -1,0 +1,57 @@
+:host {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-background {
+  background-color: #201e2e;
+  width: 100vw;
+  height: 62vh;
+  position: absolute;
+  top: 0;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 55%);
+}
+
+.light-background {
+  background-color: #3fafa2;
+  width: 100vw;
+  height: 50vh;
+  position: absolute;
+  bottom: 0;
+  clip-path: polygon(0% 0%, 100% 25%, 100% 100%, 0% 100%);
+}
+
+.light-element {
+  background-color: #3fafa2;
+  width: 100vw;
+  height: 20vh;
+  position: absolute;
+  top: 42.5vh;
+  clip-path: polygon(0% 0%, 100% 100%, 100% 100%, 0% 18%);
+}
+
+.color-element {
+  background-color: #ff8879;
+  width: 70vw;
+  height: 13vh;
+  position: absolute;
+  left: 30vw;
+  top: 50vh;
+  clip-path: polygon(0% 100%, 100% 0%, 100% 25%, 0% 100%);
+}
+
+.start-button {
+  background-color: transparent;
+  width: calc(140px + 40vw);
+  height: 14vh;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 3vh;
+  border: 2px solid white;
+  outline: none;
+  z-index: 1;
+}

@@ -1,11 +1,8 @@
-<h1>{{exercise}}</h1>
-<div *ngIf="prevSetList$ | async as setList">
-  <h2 *ngFor="let set of setList">Previous workout: {{set.date | date: 'd.MM.yyyy, HH:mm'}}</h2>
-</div>
-<app-table [setList$]="prevSetList$"></app-table>
-<h2>Current workout:</h2>
-<app-table [setList$]="setList$"></app-table>
-<h2>Add set</h2>
-<app-range-input (submitSet)="addSet($event)"></app-range-input>
-<button type="button" routerLink="/workout/{{id}}">Choose another exercise</button>
-<button type="button" routerLink="/summary" (click)="getResults()">Finish workout and check out the results</button>
+  <h1 class="exercise-title">{{exercise}}</h1>
+  <h2 *ngIf="prevSetList$ | async as setList" class="workout-title">Previous workout: <span *ngFor="let set of setList">{{set.date | date: 'd.MM.yyyy, HH:mm'}}</span></h2>
+  <app-table [setList$]="prevSetList$"></app-table>
+  <h2 class="workout-title">Current workout:</h2>
+  <app-table [setList$]="setList$"></app-table>
+  <button class="workout-button" (click)="openDialog()">Add set</button>
+  <button class="workout-button" type="button" routerLink="/workout/{{id}}">Choose another exercise</button>
+  <button class="workout-button" type="button" routerLink="/workout/{{id}}/{{exerciseId}}/summary" (click)="getResults()">Finish workout and check out the results</button>

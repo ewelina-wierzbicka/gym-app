@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { WorkoutServiceService } from '../workout-service.service';
 import { Set } from '../set';
 import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { RangeInputComponent } from '../range-input/range-input.component';
+
 
 @Component({
   selector: 'app-workout-manager',
@@ -18,9 +21,22 @@ export class WorkoutManagerComponent implements OnInit {
   setList$: Observable<any>;
   prevSetList$: Observable<any>;
 
+
   constructor(
     private workoutService: WorkoutServiceService,
-    private route: ActivatedRoute) {}
+    private route: ActivatedRoute,
+    private dialog: MatDialog) {}
+
+
+    openDialog() {
+      const dialogRef = this.dialog.open(RangeInputComponent, {
+        height: '70vh',
+        width: 'calc(215px + 20vw)'
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        this.addSet(result);
+      });
+    }
 
   addSet(set: Set) {
     this.workoutService.addSet(this.id, this.exerciseId, set);
@@ -40,4 +56,4 @@ export class WorkoutManagerComponent implements OnInit {
     this.prevSetList$ = this.workoutService.getPreviousSets();
   }
 
-  }
+}
