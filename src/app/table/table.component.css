@@ -1,3 +1,8 @@
+.exercise-title {
+  font-size: 3vh;
+  margin: 8vh 0 4vh 0;
+}
+
 .workout-table {
   width: calc(140px + 40vw);
   text-align: center;

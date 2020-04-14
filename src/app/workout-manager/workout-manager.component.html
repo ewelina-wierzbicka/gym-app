@@ -1,5 +1,5 @@
   <h1 class="exercise-title">{{exercise}}</h1>
-  <h2 *ngIf="prevSetList$ | async as setList" class="workout-title">Poprzedni trening: <span *ngFor="let set of setList">{{set.date | date: 'd.MM.yyyy, HH:mm'}}</span></h2>
+  <h2 *ngIf="prevSetList$ | async as setList" class="workout-title">Poprzedni trening: <span *ngFor="let element of setList">{{element.date | date: 'd.MM.yyyy, HH:mm'}}</span></h2>
   <app-table [setList$]="prevSetList$"></app-table>
   <h2 class="workout-title">Obecny trening:</h2>
   <app-table [setList$]="setList$"></app-table>

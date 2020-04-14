@@ -1,22 +1,27 @@
-<table class="workout-table">
-  <thead>
-    <tr>
-      <th>SERIA</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-      <th>5</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngIf="setList$ | async as setList">
-      <th>CIĘŻAR</th>
-      <td *ngFor="let set of setList[0]?.sets">{{set.weight}}</td>
-    </tr>
-    <tr *ngIf="setList$ | async as setList">
-      <th>POWTÓRZENIA</th>
-      <td *ngFor="let set of setList[0]?.sets">{{set.rep}}</td>
-    </tr>
-  </tbody>
-</table>
+<div *ngIf="setList$ | async as setList">
+  <div *ngFor="let element of setList">
+    <h1 class="exercise-title" *ngIf="element.title">{{element.title}}</h1>
+    <table class="workout-table">
+      <thead>
+        <tr>
+          <th>SERIA</th>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>CIĘŻAR</th>
+          <td *ngFor="let set of element.sets">{{set.weight}}</td>
+        </tr>
+        <tr>
+          <th>POWTÓRZENIA</th>
+          <td *ngFor="let set of element.sets">{{set.rep}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
