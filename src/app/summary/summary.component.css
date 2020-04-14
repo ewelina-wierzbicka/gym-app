@@ -12,6 +12,8 @@
   font-weight: 400;
   font-size: 3vh;
   margin: 6vh 0;
+  width: 100%;
+  text-align: center;
 }
 
 .summary-list {
@@ -30,7 +32,7 @@
   border-collapse: collapse;
   border-style: hidden;
   margin-bottom: 8vh;
-  font-size: 2.5vh;
+  font-size: 2.2vh;
 }
 
 .summary-table th, .summary-table td  {

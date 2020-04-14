@@ -1,10 +1,10 @@
 <form class="set-form" [formGroup]="setForm">
   <div class="form-wrapper">
-    <label for="weight">WEIGHT</label>
+    <label for="weight">CIĘŻĄR</label>
     <mat-slider vertical id="weight" formControlName="weight" thumbLabel min="1" max="100" required></mat-slider>
   </div>
   <div class="form-wrapper">
-    <label for="rep">REPETITIONS</label>
+    <label for="rep">POWTÓRZENIA</label>
     <mat-slider vertical id="rep" formControlName="rep" thumbLabel min="1" max="100" required></mat-slider>
   </div>
   <button class="submit-button" type="submit" [mat-dialog-close]="setForm.value">Save</button>

@@ -1,7 +1,7 @@
 <table class="workout-table">
   <thead>
     <tr>
-      <th>SET</th>
+      <th>SERIA</th>
       <th>1</th>
       <th>2</th>
       <th>3</th>
@@ -11,11 +11,11 @@
   </thead>
   <tbody>
     <tr *ngIf="setList$ | async as setList">
-      <th>WEIGHT</th>
+      <th>CIĘŻAR</th>
       <td *ngFor="let set of setList[0]?.sets">{{set.weight}}</td>
     </tr>
     <tr *ngIf="setList$ | async as setList">
-      <th>REPETITIONS</th>
+      <th>POWTÓRZENIA</th>
       <td *ngFor="let set of setList[0]?.sets">{{set.rep}}</td>
     </tr>
   </tbody>

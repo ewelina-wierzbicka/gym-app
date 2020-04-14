@@ -1,11 +1,11 @@
-<h1 class="summary-title">Current workout:</h1>
+<h1 class="summary-title">Obecny trening:</h1>
 <ul class="summary-list" *ngIf="results$ | async as results">
   <li *ngFor="let exercise of results[0]?.exercises">
     <h2 class="exercise-title">{{exercise.title}}</h2>
     <table class="summary-table">
       <thead>
         <tr>
-          <th>SET</th>
+          <th>SERIA</th>
           <th>1</th>
           <th>2</th>
           <th>3</th>

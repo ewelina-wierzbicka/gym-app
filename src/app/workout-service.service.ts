@@ -9,10 +9,10 @@ import { HttpClient } from '@angular/common/http';
 export class WorkoutServiceService {
 
   exerciseList: string[] = [
-    'Barbell bench press',
-    'Standing barbell press',
-    'Seated dumbbell press',
-    'Rope tricep exstension'
+    'Wyciskanie sztangi leżąc',
+    'Wyciskanie sztangi stojąc',
+    'Wyciskanie hantli siedząc',
+    'Ściąganie linek wyciągu górnego'
   ];
 
   private setListSubject: Subject<any> = new Subject<any>();
