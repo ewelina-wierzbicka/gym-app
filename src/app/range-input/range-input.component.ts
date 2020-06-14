@@ -9,7 +9,7 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./range-input.component.css']
 })
 export class RangeInputComponent implements OnInit {
-@Output() submitSet: EventEmitter<Set> = new EventEmitter();
+// @Output() submitSet: EventEmitter<Set> = new EventEmitter();
 
   setForm = this.formBuilder.group({
   weight: ['', Validators.required],
@@ -19,9 +19,9 @@ export class RangeInputComponent implements OnInit {
   constructor(
    private formBuilder: FormBuilder) { }
 
-  onSubmit(data: Set) {
-    this.submitSet.emit(data);
-  }
+  // onSubmit(data: Set) {
+  //   this.submitSet.emit(data);
+  // }
 
   ngOnInit() {
   }

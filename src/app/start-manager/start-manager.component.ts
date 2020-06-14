@@ -20,6 +20,11 @@ export class StartManagerComponent implements OnInit {
     this.router.navigate(['workout', id]);
   }
 
+  getAllResults() {
+    this.workoutService.retrieveAllResults();
+    this.router.navigate(['summary']);
+  }
+
   ngOnInit() {
   }
 

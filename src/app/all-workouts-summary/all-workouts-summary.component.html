@@ -1,0 +1,35 @@
+<h2 class="dates-heading">ZAKRES DAT</h2>
+<div *ngIf="isDataAvailable">
+<form class="date-form" [formGroup]="dateForm">
+  <div class="form-wrapper">
+  <label for="dateFrom">OD:</label>
+  <input matInput [matDatepicker]="dateFrom" formControlName="dateFrom" id="dateFrom" [min]="tenWorkouts" [max]="maxDate">
+  <mat-datepicker-toggle matSuffix [for]="dateFrom"></mat-datepicker-toggle>
+  <mat-datepicker #dateFrom></mat-datepicker>
+  </div>
+  <div class="form-wrapper">
+  <label for="dateTo'">DO:</label>
+  <input matInput [matDatepicker]="dateTo" formControlName="dateTo" id="dateTo" [min]="minDate" [max]="Today">
+  <mat-datepicker-toggle matSuffix [for]="dateTo"></mat-datepicker-toggle>
+  <mat-datepicker #dateTo></mat-datepicker>
+  </div>
+  <div class="form-wrapper">
+  <label for="exercise">ĆWICZENIE:</label>
+  <select formControlName="exercise" id="exercise">
+      <option *ngFor="let exercise of exerciseList; index as i" [selected]="i == 0" [value]="exercise">{{exercise}}</option>
+  </select>
+  </div>
+</form>
+</div>
+
+<div *ngIf="isDataAvailable">
+  <canvas class="summaryChart" baseChart height="400"
+      [chartType]="scatterChartType"
+      [datasets]= "chartData"
+      [labels]="chartLabels"
+      [options]="chartOptions"
+      [legend]="true"
+      [colors]="chartColors"
+      (chartClick)="onChartClick($event)">
+  </canvas>
+</div>

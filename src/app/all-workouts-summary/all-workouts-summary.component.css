@@ -1,0 +1,62 @@
+:host {
+  background-color: #3fafa2;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.dates-heading {
+  width: 100%;
+  text-align: center;
+  margin: 6vh 0 2vh 0;
+  font-size: 3vh;
+}
+
+.form-wrapper {
+  width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* min-height: 30px; */
+  align-items: center;
+  /* align-items: center; */
+}
+
+.date-form label {
+  margin-right: 2vw;
+  /* position: absolute;
+  left: 30%;
+  width: 100px;
+  text-align: end; */
+}
+
+.date-form label[for=exercise] {
+  font-size: 3vh;
+  width: 100%;
+  text-align: center;
+  margin: 3vh 0 2vh 0;
+  font-weight: bold;
+}
+
+.date-form input {
+  color: black;
+  /* position: absolute;
+  left: 50%;
+  transform: translateX(-50%); */
+}
+
+.date-form select, .date-form option {
+  color: black;
+}
+
+.summaryChart {
+  margin-top: 6vh;
+  width: 400px;
+}
+
+.date-form mat-datepicker-toggle {
+ transform: translateY(-2px);
+}

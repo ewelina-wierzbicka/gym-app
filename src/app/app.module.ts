@@ -9,11 +9,16 @@ import { ExerciseManagerComponent } from './exercise-manager/exercise-manager.co
 import { TableComponent } from './table/table.component';
 import { WorkoutManagerComponent } from './workout-manager/workout-manager.component';
 import { RangeInputComponent } from './range-input/range-input.component';
-import { SummaryComponent } from './summary/summary.component';
+import { CurrentWorkoutSummaryComponent } from './current-workout-summary/current-workout-summary.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { AllWorkoutsSummaryComponent } from './all-workouts-summary/all-workouts-summary.component';
+import { ChartsModule } from 'ng2-charts';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     TableComponent,
     WorkoutManagerComponent,
     RangeInputComponent,
-    SummaryComponent,
+    CurrentWorkoutSummaryComponent,
+    AllWorkoutsSummaryComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,12 +38,18 @@ import { MatDialogModule } from '@angular/material/dialog';
     HttpClientModule,
     BrowserAnimationsModule,
     MatSliderModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ChartsModule
   ],
   entryComponents: [
     RangeInputComponent
   ],
-  providers: [],
+  providers: [
+    DatePipe,
+    {provide: MAT_DATE_LOCALE, useValue: 'pl'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

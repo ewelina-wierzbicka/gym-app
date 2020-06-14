@@ -3,6 +3,8 @@
   <app-table [setList$]="prevSetList$"></app-table>
   <h2 class="workout-title">Obecny trening:</h2>
   <app-table [setList$]="setList$"></app-table>
-  <button class="workout-button" (click)="openDialog()">Dodaj serię</button>
+  <button class="workout-button" [disabled]="checkSets()" (click)="openDialog()">Dodaj serię</button>
+  <!-- <button class="workout-button" [disabled]="checkSets()" (click)="checkSets()" ? "alert()" : "openDialog()">Dodaj serię</button> -->
   <button class="workout-button" type="button" routerLink="/workout/{{id}}">Wybierz inne ćwiczenie</button>
-  <button class="workout-button" type="button" routerLink="/workout/{{id}}/{{exerciseId}}/summary" (click)="getResults()">Zakończ trening i zobacz wyniki</button>
+  <button class="workout-button" type="button" routerLink="/workout/{{id}}/{{exerciseId}}/summary" (click)="getCurrentResults()">Zakończ trening i zobacz wyniki</button>
+

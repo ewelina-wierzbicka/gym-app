@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Set } from './set';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -16,14 +16,15 @@ export class WorkoutServiceService {
   ];
 
   private setListSubject: Subject<any> = new Subject<any>();
-  private resultsSubject: Subject<any> = new Subject<any>();
+  private currentResultsSubject: Subject<any> = new Subject<any>();
+  private allResultsSubject: Subject<any> = new Subject<any>();
   private prevSetListSubject: Subject<any> = new Subject<any>();
 
   constructor(private http: HttpClient) { }
 
     startWorkout(id) {
-        this.http.post('http://localhost:3000/workout', id)
-        .subscribe();
+      this.http.post('http://localhost:3000/workout', id)
+      .subscribe();
     }
 
     startExercise(id: string, exerciseId: string, exercise: string) {
@@ -49,9 +50,14 @@ export class WorkoutServiceService {
       .subscribe(response => this.prevSetListSubject.next(response));
     }
 
-    retrieveResults(id: string) {
+    retrieveCurrentResults(id: string) {
       this.http.get(`http://localhost:3000/workout/${id}`)
-      .subscribe(response => this.resultsSubject.next(response));
+      .subscribe(response => this.currentResultsSubject.next(response));
+    }
+
+    retrieveAllResults() {
+      this.http.get('http://localhost:3000/workout')
+      .subscribe(response => this.allResultsSubject.next(response));
     }
 
     getSets() {
@@ -62,8 +68,12 @@ export class WorkoutServiceService {
       return this.prevSetListSubject.asObservable();
     }
 
-    getResults() {
-      return this.resultsSubject.asObservable();
+    getCurrentResults() {
+      return this.currentResultsSubject.asObservable();
+    }
+
+    getAllResults() {
+      return this.allResultsSubject.asObservable();
     }
 
     }
