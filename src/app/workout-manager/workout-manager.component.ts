@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WorkoutServiceService } from '../workout-service.service';
 import { Set } from '../set';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { RangeInputComponent } from '../range-input/range-input.component';
 import { first } from 'rxjs/operators';
@@ -17,15 +17,15 @@ import { first } from 'rxjs/operators';
 export class WorkoutManagerComponent implements OnInit {
   exerciseList = this.workoutService.exerciseList;
   exerciseId: string;
-  exercise: string;
+  exercise: {
+    title: string,
+    max: string
+  };
   id: string;
+  max: number;
   setList$: Observable<any>;
   prevSetList$: Observable<any>;
-  setSubscription: Subscription = new Subscription;
   numberOfSets = 0;
-
-  // setListSubscription: Subscription; //?
-  // setList: Array<any>; //?
 
   constructor(
     private workoutService: WorkoutServiceService,
@@ -36,7 +36,8 @@ export class WorkoutManagerComponent implements OnInit {
     openDialog() {
       const dialogRef = this.dialog.open(RangeInputComponent, {
         height: '70vh',
-        width: 'calc(215px + 20vw)'
+        width: 'calc(215px + 20vw)',
+        data: {max: this.exercise.max}
       });
       dialogRef.afterClosed().subscribe(result => {
         this.addSet(result);

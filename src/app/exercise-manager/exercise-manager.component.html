@@ -1,5 +1,5 @@
 <ul class="exercise-list">
   <li *ngFor="let exercise of exerciseList; index as exerciseId">
-    <button class="exercise-button" (click)="startExercise(exerciseId, exercise)" routerLink='{{exerciseId}}'>{{exercise}}</button>
+    <button class="exercise-button" (click)="startExercise(exerciseId, exercise.title)" routerLink='{{exerciseId}}'>{{exercise.title}}</button>
   </li>
 </ul>

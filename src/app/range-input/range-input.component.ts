@@ -1,7 +1,7 @@
-import { Component, OnInit, Output, EventEmitter, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Set } from '../set';
 import { Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-range-input',
@@ -9,7 +9,6 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./range-input.component.css']
 })
 export class RangeInputComponent implements OnInit {
-// @Output() submitSet: EventEmitter<Set> = new EventEmitter();
 
   setForm = this.formBuilder.group({
   weight: ['', Validators.required],
@@ -17,13 +16,11 @@ export class RangeInputComponent implements OnInit {
   });
 
   constructor(
-   private formBuilder: FormBuilder) { }
+   private formBuilder: FormBuilder,
+   @Inject(MAT_DIALOG_DATA) public data: {max: string}
+  ) { }
 
-  // onSubmit(data: Set) {
-  //   this.submitSet.emit(data);
-  // }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

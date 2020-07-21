@@ -3,20 +3,27 @@
 <form class="date-form" [formGroup]="dateForm">
   <div class="form-wrapper">
   <label for="dateFrom">OD:</label>
-  <input matInput [matDatepicker]="dateFrom" formControlName="dateFrom" id="dateFrom" [min]="tenWorkouts" [max]="maxDate">
+  <input matInput [matDatepicker]="dateFrom" formControlName="dateFrom" id="dateFrom" [max]="Today" required>
   <mat-datepicker-toggle matSuffix [for]="dateFrom"></mat-datepicker-toggle>
   <mat-datepicker #dateFrom></mat-datepicker>
+
   </div>
+  <mat-error *ngIf="dateForm.get('dateFrom').invalid"> Musisz wybrać lub wpisać poprawną datę </mat-error>
   <div class="form-wrapper">
   <label for="dateTo'">DO:</label>
-  <input matInput [matDatepicker]="dateTo" formControlName="dateTo" id="dateTo" [min]="minDate" [max]="Today">
+  <input matInput [matDatepicker]="dateTo" formControlName="dateTo" id="dateTo" [max]="Today" required>
   <mat-datepicker-toggle matSuffix [for]="dateTo"></mat-datepicker-toggle>
   <mat-datepicker #dateTo></mat-datepicker>
+
   </div>
+  <mat-error *ngIf="dateForm.get('dateTo').invalid"> Musisz wybrać lub wpisać poprawną datę </mat-error>
+  <mat-error *ngIf="dateForm.errors?.datesError && (dateForm.touched || dateForm.dirty)">
+    Data początkowa nie może być późniejsza niż data końcowa
+  </mat-error>
   <div class="form-wrapper">
   <label for="exercise">ĆWICZENIE:</label>
   <select formControlName="exercise" id="exercise">
-      <option *ngFor="let exercise of exerciseList; index as i" [selected]="i == 0" [value]="exercise">{{exercise}}</option>
+      <option *ngFor="let exercise of exerciseList; index as i" [selected]="i == 0" [value]="exercise.title">{{exercise.title}}</option>
   </select>
   </div>
 </form>

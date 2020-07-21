@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Set } from './set';
-import { Subject, Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -8,11 +8,23 @@ import { HttpClient } from '@angular/common/http';
 })
 export class WorkoutServiceService {
 
-  exerciseList: string[] = [
-    'Wyciskanie sztangi leżąc',
-    'Wyciskanie sztangi stojąc',
-    'Wyciskanie hantli siedząc',
-    'Ściąganie linek wyciągu górnego'
+  exerciseList = [
+    {
+      title: 'Przysiady ze sztangą',
+      max: '70'
+    },
+    {
+      title: 'Wyciskanie sztangi stojąc',
+      max: '20'
+    },
+    {
+      title: 'Unoszenie hantli bokiem',
+      max: '20'
+    },
+    {
+      title: 'Wyciskanie hantli siedząc',
+      max: '50'
+    }
   ];
 
   private setListSubject: Subject<any> = new Subject<any>();

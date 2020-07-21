@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StartManagerComponent } from './start-manager/start-manager.component';
@@ -19,6 +18,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { AllWorkoutsSummaryComponent } from './all-workouts-summary/all-workouts-summary.component';
 import { ChartsModule } from 'ng2-charts';
 import { DatePipe } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -39,6 +39,7 @@ import { DatePipe } from '@angular/common';
     BrowserAnimationsModule,
     MatSliderModule,
     MatDialogModule,
+    MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
     ChartsModule

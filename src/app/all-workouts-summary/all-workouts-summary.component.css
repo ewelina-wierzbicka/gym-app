@@ -15,22 +15,21 @@
   font-size: 3vh;
 }
 
+.date-form {
+  text-align: center;
+  width: 80vw;
+}
+
 .form-wrapper {
   width: 80vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* min-height: 30px; */
   align-items: center;
-  /* align-items: center; */
 }
 
 .date-form label {
   margin-right: 2vw;
-  /* position: absolute;
-  left: 30%;
-  width: 100px;
-  text-align: end; */
 }
 
 .date-form label[for=exercise] {
@@ -41,14 +40,7 @@
   font-weight: bold;
 }
 
-.date-form input {
-  color: black;
-  /* position: absolute;
-  left: 50%;
-  transform: translateX(-50%); */
-}
-
-.date-form select, .date-form option {
+.date-form input, .date-form select, .date-form option {
   color: black;
 }
 
@@ -59,4 +51,9 @@
 
 .date-form mat-datepicker-toggle {
  transform: translateY(-2px);
+}
+
+.date-form mat-error {
+  font-size: 2vh;
+  color: white;
 }
