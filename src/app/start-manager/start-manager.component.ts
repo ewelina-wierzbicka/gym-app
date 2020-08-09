@@ -14,7 +14,7 @@ export class StartManagerComponent implements OnInit {
     private workoutService: WorkoutServiceService,
     private router: Router) { }
 
-  startWorkout() {
+startWorkout() {
     const id = uuid();
     this.workoutService.startWorkout({id});
     this.router.navigate(['workout', id]);
@@ -26,6 +26,7 @@ export class StartManagerComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.workoutService.getPreviousId();
   }
 
 }

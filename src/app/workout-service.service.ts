@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Set } from './set';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -32,6 +32,8 @@ export class WorkoutServiceService {
   private allResultsSubject: Subject<any> = new Subject<any>();
   private prevSetListSubject: Subject<any> = new Subject<any>();
 
+  prevId: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
   constructor(private http: HttpClient) { }
 
     startWorkout(id) {
@@ -39,10 +41,10 @@ export class WorkoutServiceService {
       .subscribe();
     }
 
-    startExercise(id: string, exerciseId: string, exercise: string) {
+    startExercise(id: string, prevId: string, exerciseId: string, exercise: string) {
       this.http.put(`http://localhost:3000/workout/${id}`, {exerciseId, exercise})
       .subscribe(() => {
-        this.retrievePreviousSets(exerciseId);
+        this.retrievePreviousSets(prevId, exerciseId);
         this.retrieveSets(id, exerciseId);
       });
     }
@@ -57,8 +59,8 @@ export class WorkoutServiceService {
       .subscribe(response => this.setListSubject.next(response));
     }
 
-    retrievePreviousSets(exerciseId: string) {
-      this.http.get(`http://localhost:3000/workout/exercises/${exerciseId}`)
+    retrievePreviousSets(id: string, exerciseId: string) {
+      this.http.get(`http://localhost:3000/workout/${id}/exercises/${exerciseId}`)
       .subscribe(response => this.prevSetListSubject.next(response));
     }
 
@@ -70,6 +72,14 @@ export class WorkoutServiceService {
     retrieveAllResults() {
       this.http.get('http://localhost:3000/workout')
       .subscribe(response => this.allResultsSubject.next(response));
+    }
+
+    getPreviousId() {
+      this.http.get<any[]>('http://localhost:3000/workout')
+      .subscribe(response => {
+        this.prevId.next(response[response.length - 1]._id);
+        console.log(this.prevId.value);
+      });
     }
 
     getSets() {

@@ -44,6 +44,24 @@ export class AllWorkoutsSummaryComponent implements OnInit {
     legend: {
       position: "bottom",
     },
+    scales: {
+      yAxes: [
+        {
+          scaleLabel: {
+            display: true,
+            labelString: "powtórzenia",
+          },
+        },
+      ],
+      xAxes: [
+        {
+          scaleLabel: {
+            display: true,
+            labelString: "ciężar",
+          },
+        },
+      ],
+    },
   };
   chartData: Array<any>;
   chartLabels: Label[];
@@ -58,7 +76,9 @@ export class AllWorkoutsSummaryComponent implements OnInit {
     this.allResultsSubscription = this.workoutService
       .getAllResults()
       .subscribe((results) => {
-        this.allResults = results;
+        this.allResults = results.filter(
+          (workout) => workout.exercises.length !== 0
+        );
         this.dateFrom = this.allResults[this.allResults.length - 5].date;
         this.dateForm.controls["dateFrom"].setValue(this.dateFrom);
       });
@@ -74,20 +94,15 @@ export class AllWorkoutsSummaryComponent implements OnInit {
           workout.date <= new Date(this.dateTo).toISOString()
       )
       .map((workout) => {
-        let exercises;
-        if (workout.exercises) {
-          exercises = workout.exercises.filter(
-            (exercise) => exercise.title === this.exercise
-          );
-          if (exercises.length > 0) {
-            return { date: workout.date, exercises: exercises };
-          }
-        }
-      });
+        let exercises = workout.exercises.filter(
+          (exercise) => exercise.title === this.exercise
+        );
+        return { date: workout.date, exercises: exercises };
+      })
+      .filter((workout) => workout.exercises.length !== 0);
 
-    let r = 55;
-    let g = -20;
-    let b = -20;
+    let a = 1.1;
+
     if (myResults.length > 10) {
       alert(
         `Wybrałeś ${myResults.length} treningów. Na wykresie 10 najnowszych z podanego zakresu.`
@@ -108,12 +123,10 @@ export class AllWorkoutsSummaryComponent implements OnInit {
           label: this.datepipe.transform(myResults[i].date, "d.MM.yyyy, HH:mm"),
           type: "line",
         });
-        r += 20;
-        g += 20;
-        b += 20;
+        a -= 0.1;
         this.chartColors.push({
-          pointBackgroundColor: `rgb(${r}, ${g}, ${b})`,
-          borderColor: `rgb(${r}, ${g}, ${b})`,
+          pointBackgroundColor: `rgba(66, 11, 0, ${a}`,
+          borderColor: `rgba(66, 11, 0, ${a})`,
           borderWidth: 1,
           backgroundColor: "transparent",
         });
