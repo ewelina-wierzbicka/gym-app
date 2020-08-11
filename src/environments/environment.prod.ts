@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_HOST: "http://prod",
+  API_HOST: "https://tranquil-lowlands-38742.herokuapp.com",
 };
