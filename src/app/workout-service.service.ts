@@ -3,6 +3,14 @@ import { Set } from './set';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+API_HOST: string;
+}
+  }
+}
+
 @Injectable({
   providedIn: 'root'
 })
