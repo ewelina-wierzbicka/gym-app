@@ -37,12 +37,12 @@ export class WorkoutServiceService {
   constructor(private http: HttpClient) { }
 
     startWorkout(id) {
-      this.http.post('http://localhost:3000/workout', id)
+      this.http.post(`${process.env.API_HOST}/workout`, id)
       .subscribe();
     }
 
     startExercise(id: string, prevId: string, exerciseId: string, exercise: string) {
-      this.http.put(`http://localhost:3000/workout/${id}`, {exerciseId, exercise})
+      this.http.put(`${process.env.API_HOST}/workout/${id}`, {exerciseId, exercise})
       .subscribe(() => {
         this.retrievePreviousSets(prevId, exerciseId);
         this.retrieveSets(id, exerciseId);
@@ -50,32 +50,32 @@ export class WorkoutServiceService {
     }
 
     addSet(id: string, exerciseId: string, set: Set) {
-      this.http.put(`http://localhost:3000/workout/${id}/exercises/${exerciseId}`, set)
+      this.http.put(`${process.env.API_HOST}/workout/${id}/exercises/${exerciseId}`, set)
       .subscribe(() => this.retrieveSets(id, exerciseId));
     }
 
     retrieveSets(id: string, exerciseId: string) {
-      this.http.get(`http://localhost:3000/workout/${id}/exercises/${exerciseId}`)
+      this.http.get(`${process.env.API_HOST}/workout/${id}/exercises/${exerciseId}`)
       .subscribe(response => this.setListSubject.next(response));
     }
 
     retrievePreviousSets(id: string, exerciseId: string) {
-      this.http.get(`http://localhost:3000/workout/${id}/exercises/${exerciseId}`)
+      this.http.get(`${process.env.API_HOST}/workout/${id}/exercises/${exerciseId}`)
       .subscribe(response => this.prevSetListSubject.next(response));
     }
 
     retrieveCurrentResults(id: string) {
-      this.http.get(`http://localhost:3000/workout/${id}`)
+      this.http.get(`${process.env.API_HOST}/workout/${id}`)
       .subscribe(response => this.currentResultsSubject.next(response));
     }
 
     retrieveAllResults() {
-      this.http.get('http://localhost:3000/workout')
+      this.http.get(`${process.env.API_HOST}/workout`)
       .subscribe(response => this.allResultsSubject.next(response));
     }
 
     getPreviousId() {
-      this.http.get<any[]>('http://localhost:3000/workout')
+      this.http.get<any[]>(`${process.env.API_HOST}/workout`)
       .subscribe(response => {
         this.prevId.next(response[response.length - 1]._id);
         console.log(this.prevId.value);
